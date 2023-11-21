@@ -6,13 +6,10 @@
 /*   By: ugolin-olle <ugolin-olle@student.42.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/19 17:40:26 by ugolin-olle       #+#    #+#             */
-/*   Updated: 2023/11/19 17:43:05 by ugolin-olle      ###   ########.fr       */
+/*   Updated: 2023/11/21 11:06:43 by ugolin-olle      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "minitalk.h"
-
 void	ft_check_args(int argc, char **argv)
 {
-	
 }

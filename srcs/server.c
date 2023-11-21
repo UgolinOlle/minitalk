@@ -6,15 +6,12 @@
 /*   By: ugolin-olle <ugolin-olle@student.42.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/19 17:43:37 by ugolin-olle       #+#    #+#             */
-/*   Updated: 2023/11/21 10:32:55 by ugolin-olle      ###   ########.fr       */
+/*   Updated: 2023/11/21 13:16:14 by ugolin-olle      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "includes/minitalk.h"
+#include "libs/libft.h"
 
 int	main(void)
 {
-	pid_t	pid;
-
-	pid = getpid();
 }

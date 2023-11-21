@@ -13,7 +13,6 @@
 #ifndef LIBFT_H
 # define LIBFT_H
 
-// -- External library
 # include <limits.h>
 # include <stddef.h>
 # include <stdio.h>
