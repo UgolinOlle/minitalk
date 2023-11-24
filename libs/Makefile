@@ -6,7 +6,7 @@
 #    By: ugolin-olle <ugolin-olle@student.42.fr>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/08/28 11:49:44 by ugolin-olle       #+#    #+#              #
-#    Updated: 2023/10/10 23:42:06 by ugolin-olle      ###   ########.fr        #
+#    Updated: 2023/11/21 18:01:21 by ugolin-olle      ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -45,11 +45,11 @@ $(OBJ_DIR)/%.o: $(SRC_DIR)/%.c
 
 clean:
 	@$(RM) $(OBJ_DIR)
-	@echo "$(COLOR_INFO)Object files have been removed.$(COLOR_RESET)"
+	@echo "$(COLOR_INFO)Libft object files have been removed.$(COLOR_RESET)"
 
 fclean: clean
 	@$(RM) $(NAME)
-	@echo "$(COLOR_INFO)$(NAME) has been removed.$(COLOR_RESET)"
+	@echo "$(COLOR_INFO)$(NAME) executable and objects has been removed.$(COLOR_RESET)"
 
 re: fclean all
 
