@@ -6,7 +6,7 @@
 #    By: ugolin-olle <ugolin-olle@student.42.fr>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/11/20 10:28:39 by ugolin-olle       #+#    #+#              #
-#    Updated: 2023/11/24 13:39:53 by ugolin-olle      ###   ########.fr        #
+#    Updated: 2023/11/24 16:55:38 by ugolin-olle      ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -40,9 +40,9 @@ $(SERVER): $(SRCS_SERVER) $(LIBFT)
 	@$(CC) $(FLAGS) -o $@ $(SRCS_SERVER) -L$(LIBSDIR) -lft
 	@echo "$(GREEN)Server is ready.$(DEFCOLOR)"
 
-$(CLIENT): $(SRCS_CLIENT)$ $(LIBFT)
+$(CLIENT): $(SRCS_CLIENT) $(LIBFT)
 	@$(CC) $(FLAGS) -o $@ $(SRCS_CLIENT) -L$(LIBSDIR) -lft
-	@echo "$(GREEN)Cerver is ready.$(DEFCOLOR)"
+	@echo "$(GREEN)Client is ready.$(DEFCOLOR)"
 
 $(LIBFT):
 	@make -s -C $(LIBSDIR)
