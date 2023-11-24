@@ -6,7 +6,7 @@
 /*   By: ugolin-olle <ugolin-olle@student.42.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/19 17:43:37 by ugolin-olle       #+#    #+#             */
-/*   Updated: 2023/11/21 16:01:01 by ugolin-olle      ###   ########.fr       */
+/*   Updated: 2023/11/24 15:05:38 by ugolin-olle      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,11 +36,9 @@ static void	ft_handler(int signum)
 	bits = 0;
 	message = 0;
 	if (signum == SIGUSR1)
-		message |= 1 << (((sizeof(int) * 8) - 1) - bits);
-	else if (signum == SIGUSR2)
 		message |= 1 << (((sizeof(char) * 8) - 1) - bits);
 	bits++;
-	if (bits == 0)
+	if (bits == 8)
 	{
 		if (message == '\0')
 			ft_putstr_fd("Message received", STDOUT_FILENO);
