@@ -6,7 +6,7 @@
 #    By: ugolin-olle <ugolin-olle@student.42.fr>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/11/20 10:28:39 by ugolin-olle       #+#    #+#              #
-#    Updated: 2023/11/24 16:55:38 by ugolin-olle      ###   ########.fr        #
+#    Updated: 2023/11/25 21:02:49 by ugolin-olle      ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -22,7 +22,7 @@ LIBFT       = $(LIBSDIR)/libft.a
 
 # -- Alias
 CC     = gcc
-CFLAGS = -Wall -Wextra -Werror -I$(HDRDIR) -L$(LIBSDIR) -llibft
+CFLAGS = -Wall -Wextra -Werror -I$(HDRDIR) -L$(LIBSDIR) -llibft -fsanitize=address
 RM     = rm -rf
 
 
@@ -58,5 +58,8 @@ fclean: clean
 
 re: fclean all
 	@echo "$(GREEN)Cleaned and rebuilt successfully!$(DEFCOLOR)"
+
+norminette:
+	@norminette
 
 .PHONY: all clean fclean re
