@@ -6,7 +6,7 @@
 /*   By: ugolin-olle <ugolin-olle@student.42.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/19 17:40:26 by ugolin-olle       #+#    #+#             */
-/*   Updated: 2023/11/26 14:22:46 by ugolin-olle      ###   ########.fr       */
+/*   Updated: 2023/11/26 16:34:14 by ugolin-olle      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -103,9 +103,6 @@ static void	ft_config_client(void)
 			STDOUT_FILENO);
 		exit(EXIT_FAILURE);
 	}
-	ft_putstr_fd("[CLIENT] - Client as been configured correctly.",
-		STDOUT_FILENO);
-	ft_putstr_fd("\n", STDOUT_FILENO);
 }
 
 /**
