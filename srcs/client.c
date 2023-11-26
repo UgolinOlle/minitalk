@@ -6,7 +6,7 @@
 /*   By: ugolin-olle <ugolin-olle@student.42.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/19 17:40:26 by ugolin-olle       #+#    #+#             */
-/*   Updated: 2023/11/26 18:28:49 by ugolin-olle      ###   ########.fr       */
+/*   Updated: 2023/11/26 18:45:45 by ugolin-olle      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,20 +28,19 @@ static void	ft_args_check(int argc, char **argv)
 	i = 0;
 	if (argc != 3)
 	{
-		ft_putstr_fd("An error occured while use client. Wrong format.",
-			STDOUT_FILENO);
+		ft_putstr_fd("[CLIENT] - Error: wrong format.", STDOUT_FILENO);
 		ft_putstr_fd("./client <PID> <MESSAGE>", STDOUT_FILENO);
 		exit(EXIT_FAILURE);
 	}
 	while (argv[1][i])
 	{
 		if (!ft_isdigit(argv[1][i]))
-			ft_handle_error("[SERVER] - An error occured, PID is wrong.");
+			ft_handle_error("[CLIENT] - Error: PID is wrong.");
 		i++;
 	}
 	if (*argv[2] == 0)
 	{
-		ft_handle_error("[SERVER] - Error, message can not be empty.");
+		ft_handle_error("[CLIENT] - Error: message can not be empty.");
 	}
 }
 
@@ -87,17 +86,9 @@ static void	ft_config_client(void)
 	struct sigaction	sa_client;
 
 	if (sigaction(SIGUSR1, &sa_client, NULL) < 0)
-	{
-		ft_putstr_fd("[CLIENT] - Error: SIGUSR1 asn't been set.",
-			STDOUT_FILENO);
-		exit(EXIT_FAILURE);
-	}
+		ft_handle_error("[CLIENT] - Error: SIGUSR1 asn't been set.");
 	else if (sigaction(SIGUSR2, &sa_client, NULL) < 0)
-	{
-		ft_putstr_fd("[CLIENT] - Error: SIGUSR2 asn't been set.",
-			STDOUT_FILENO);
-		exit(EXIT_FAILURE);
-	}
+		ft_handle_error("[CLIENT] - Error: SIGUSR2 asn't been set.");
 }
 
 /**
@@ -121,5 +112,6 @@ int	main(int argc, char **argv)
 	ft_putstr_fd("\n", STDOUT_FILENO);
 	ft_config_client();
 	ft_send_bits(pid, argv[2]);
+	ft_send_bits(pid, "\n");
 	return (EXIT_SUCCESS);
 }
