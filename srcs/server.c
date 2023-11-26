@@ -6,59 +6,41 @@
 /*   By: ugolin-olle <ugolin-olle@student.42.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/19 17:43:37 by ugolin-olle       #+#    #+#             */
-/*   Updated: 2023/11/25 19:56:01 by ugolin-olle      ###   ########.fr       */
+/*   Updated: 2023/11/26 14:17:46 by ugolin-olle      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-
-/**
- * @file server.c
- * @brief Server program for Minitalk project.
- *
- * This file contains the server code for the Minitalk project.
-	The server listens for signals (SIGUSR1 and SIGUSR2) sent by a Minitalk client,
- * and reconstructs the message bit by bit. Once a full character is received,
- * it is printed to the standard output.
- */
 
 #include "../includes/minitalk.h"
 
 /**
- * @brief Gestionnaire de signal pour le serveur.
+ * @brief Signal handler for the server.
  *
- * Cette fonction est appelée lorsqu'un signal est reçu par le serveur.
- * Elle reconstruit les caractères à partir des bits envoyés par le client.
- * Après la réception d'un caractère complet,
-	celui-ci est imprimé sur la sortie standard.
- * Si un caractère nul est reçu, une notification "Message reçu" est imprimée.
+ * This function is called when a signal is received by the server.
+ * It reconstructs characters from the bits sent by the client.
+ * After receiving a complete character, it is printed to the standard output.
+ * If a null character is received,
+	a "Message received" notification is printed.
  *
- * @param signum Le numéro du signal reçu (SIGUSR1 ou SIGUSR2).
- * @param sv_info Informations sur le signal, y compris le PID de l'expéditeur.
- * @param context Pointeur vers un contexte,
-	non utilisé dans cette fonction (peut être ignoré).
+ * @param signum The signal number received (SIGUSR1 or SIGUSR2).
+ * @param sv_info Information about the signal, including the sender's PID.
+ * @param context Pointer to a context,
+	not used in this function (can be ignored).
  */
 static void	ft_handler(int signum, siginfo_t *info, void *ucontent)
 {
-	static int				bits = -1;
-	static unsigned char	c;
+	static int	bits;
+	static int	c;
 
 	(void)ucontent;
-	if (bits < 0)
-		bits = 7;
 	if (signum == SIGUSR1)
-		c |= (1 << bits);
-	bits--;
-	if (bits < 0 && c)
+		c += 1 << (7 - bits);
+	bits++;
+	if (bits == 8 && c)
 	{
-		if (c == '\0')
-			ft_putstr_fd("\n", STDOUT_FILENO);
 		ft_putchar_fd(c, STDOUT_FILENO);
 		c = 0;
-		if (kill(info->si_pid, SIGUSR2) == -1)
-			ft_handle_error("Server failed to send SIGUSR2");
-		return ;
+		bits = 0;
 	}
-	if (kill(info->si_pid, SIGUSR1) == -1)
-		ft_handle_error("Failed to send SIGUSR1");
 }
 
 /**

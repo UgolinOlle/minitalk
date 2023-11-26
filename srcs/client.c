@@ -6,19 +6,9 @@
 /*   By: ugolin-olle <ugolin-olle@student.42.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/19 17:40:26 by ugolin-olle       #+#    #+#             */
-/*   Updated: 2023/11/25 19:50:50 by ugolin-olle      ###   ########.fr       */
+/*   Updated: 2023/11/26 14:19:12 by ugolin-olle      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-
-/**
- * @file client.c
- * @brief Client program for the Minitalk project.
- *
- * This file contains the client code for the Minitalk project.
-
-	* The client sends messages to the server in the form of UNIX signals (SIGUSR1 and SIGUSR2),
- * encoding the characters of the message into bits.
- */
 
 #include "../includes/minitalk.h"
 
@@ -92,21 +82,6 @@ static void	ft_send_bits(pid_t sv_pid, char *content)
 }
 
 /**
- * @brief Signal handler for the client.
- *
- * Handles the signals received by the client, notably SIGUSR2,
- * indicating that the message has been successfully sent.
- *
- * @param signum Signal number received.
- */
-static void	ft_handler(int signum, siginfo_t *sv_info, void *context)
-{
-	if (signum == SIGUSR2)
-		ft_putstr_fd("[CLIENT] - Character as been successfully sent.\n",
-			STDOUT_FILENO);
-}
-
-/**
  * @brief Configures the client for signal handling.
  *
  * Sets up signal handling for the client,
@@ -116,9 +91,9 @@ static void	ft_config_client(void)
 {
 	struct sigaction	sa_client;
 
-	sa_client.sa_sigaction = &ft_handler;
-	sa_client.sa_flags = SA_SIGINFO;
-	sigemptyset(&sa_client.sa_mask);
+	// sa_client.sa_sigaction = &ft_handler;
+	// sa_client.sa_flags = SA_SIGINFO;
+	// sigemptyset(&sa_client.sa_mask);
 	if (sigaction(SIGUSR1, &sa_client, NULL) < 0)
 	{
 		ft_putstr_fd("[CLIENT] - Error: SIGUSR1 asn't been set.",
@@ -157,7 +132,5 @@ int	main(int argc, char **argv)
 	ft_putstr_fd("\n", STDOUT_FILENO);
 	ft_config_client();
 	ft_send_bits(pid, argv[2]);
-	while (1)
-		pause();
 	return (EXIT_SUCCESS);
 }
