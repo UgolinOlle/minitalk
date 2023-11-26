@@ -6,7 +6,7 @@
 /*   By: ugolin-olle <ugolin-olle@student.42.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/19 17:40:26 by ugolin-olle       #+#    #+#             */
-/*   Updated: 2023/11/26 15:40:10 by ugolin-olle      ###   ########.fr       */
+/*   Updated: 2023/11/26 18:05:38 by ugolin-olle      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,7 +74,7 @@ static void	ft_send_bits(pid_t sv_pid, char *content)
 				kill(sv_pid, SIGUSR1);
 			else
 				kill(sv_pid, SIGUSR2);
-			usleep(50);
+			usleep(100);
 			c <<= 1;
 		}
 		content++;
