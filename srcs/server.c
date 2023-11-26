@@ -6,7 +6,7 @@
 /*   By: ugolin-olle <ugolin-olle@student.42.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/19 17:43:37 by ugolin-olle       #+#    #+#             */
-/*   Updated: 2023/11/26 14:17:46 by ugolin-olle      ###   ########.fr       */
+/*   Updated: 2023/11/26 18:42:14 by ugolin-olle      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,9 +72,10 @@ static void	ft_config_server(void)
  */
 int	main(void)
 {
-	ft_putstr_fd("[SERVER] - PID: ", STDOUT_FILENO);
+	ft_putstr_fd("\033[92m[SERVER] - PID: ", STDOUT_FILENO);
 	ft_putnbr_fd(getpid(), STDOUT_FILENO);
-	ft_putstr_fd("\n[SERVER] - Waiting for message...\n", STDOUT_FILENO);
+	ft_putstr_fd("\n\033[0m\033[90m[SERVER] - Waiting for message...\033[0m\n",
+		STDOUT_FILENO);
 	ft_config_server();
 	while (1)
 		pause();

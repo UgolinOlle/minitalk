@@ -6,7 +6,7 @@
 /*   By: ugolin-olle <ugolin-olle@student.42.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/19 17:40:26 by ugolin-olle       #+#    #+#             */
-/*   Updated: 2023/11/26 18:45:02 by ugolin-olle      ###   ########.fr       */
+/*   Updated: 2023/11/26 18:52:02 by ugolin-olle      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,8 +28,8 @@ static void	ft_args_check(int argc, char **argv)
 	i = 0;
 	if (argc != 3)
 	{
-		ft_putstr_fd("[CLIENT] - Error: wrong format.", STDOUT_FILENO);
-		ft_putstr_fd("./client <PID> <MESSAGE>", STDOUT_FILENO);
+		ft_putstr_fd("[CLIENT] - Error: wrong format.\n", STDOUT_FILENO);
+		ft_putstr_fd("[CLIENT] - Example: ./client <PID> <MESSAGE>", STDOUT_FILENO);
 		exit(EXIT_FAILURE);
 	}
 	while (argv[1][i])
