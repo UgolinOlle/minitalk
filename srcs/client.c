@@ -6,7 +6,7 @@
 /*   By: ugolin-olle <ugolin-olle@student.42.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/19 17:40:26 by ugolin-olle       #+#    #+#             */
-/*   Updated: 2023/11/26 14:19:12 by ugolin-olle      ###   ########.fr       */
+/*   Updated: 2023/11/26 14:22:46 by ugolin-olle      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -91,9 +91,6 @@ static void	ft_config_client(void)
 {
 	struct sigaction	sa_client;
 
-	// sa_client.sa_sigaction = &ft_handler;
-	// sa_client.sa_flags = SA_SIGINFO;
-	// sigemptyset(&sa_client.sa_mask);
 	if (sigaction(SIGUSR1, &sa_client, NULL) < 0)
 	{
 		ft_putstr_fd("[CLIENT] - Error: SIGUSR1 asn't been set.",
