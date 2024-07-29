@@ -46,4 +46,4 @@ This project is licensed under the [MIT License](https://github.com/UgolinOlle/m
 
 ## 📩・Contact
 
-Pour toute question ou collaboration, n'hésitez pas à me contacter par [email](mailto:hello@ugolin-olle.com) ou [LinkedIn](https://linkedin.com/in/ugolin-olle)
+If you have any questions or would like to collaborate, please do not hesitate to contact me at [email](mailto:hello@ugolin-olle.com) or [LinkedIn](https://linkedin.com/in/ugolin-olle)
